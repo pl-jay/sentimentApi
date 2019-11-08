@@ -1,5 +1,5 @@
 from flask import Flask
-# from textblob import TextBlob
+from textblob import TextBlob
 
 
 app = Flask(__name__)
@@ -8,12 +8,12 @@ app = Flask(__name__)
 def index():
     return app.make_response("This is wonderfull !")
 
-# @app.route('/<message>')
-# def index(message):
+@app.route('/<message>')
+def index(message):
 
-#     sentiment="positive"
+    sentiment="positive"
 
-#     # if (TextBlob(message).sentiment.polarity < 0.0):
-#     #     sentiment="negative"
+    if (TextBlob(message).sentiment.polarity < 0.0):
+        sentiment="negative"
 
-#     return app.make_response(sentiment)
+    return app.make_response(sentiment)
